@@ -1,4 +1,6 @@
+
 const splitSlideshow = document.querySelector('.split-slideshow')
+const overlay = document.querySelector('.slideshow-overlay')
 const slideshowImages = document.querySelector('.slideshow-images')
 const slideshowText = document.querySelector('.slideshow-text')
 
@@ -47,6 +49,19 @@ function autoStartSlideshow() {
 }
 
 autoStartSlideshow()
+
+// click on overlay to stop slideshow
+overlay.addEventListener('click', () => {
+  clearInterval(intervalSlideshow)
+  splitSlideshow.classList.add('animate')
+  // document.documentElement.style.setProperty('--animate-duration', '1s')
+  // splitSlideshow.style.setProperty('--animate-duration', '1s')
+  // splitSlideshow.style.opacity = 0
+  setTimeout(() => {
+    splitSlideshow.remove()
+  }, 1000)
+})
+
 
 // setTimeout(() => {
 //   clearInterval(intervalSlideshow)

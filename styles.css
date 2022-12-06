@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@600;800&display=swap');
 
+/* :root {
+  --animate-duration: none;
+  --animate-delay: 0.9s;
+} */
+
 /* simple reset */
 * {
   margin: 0;
@@ -16,12 +21,14 @@ html {
   justify-content: center;
   align-items: center;
   font-family: 'Urbanist', sans-serif;
+  background: #d6f9ff;
 }
 
 .container {
   position: relative;
   width: 100vw;
   height: 100vh;
+  background-image: url('https://picsum.photos/id/490/1600');
 }
 
 .split-slideshow {
@@ -31,6 +38,19 @@ html {
   width: 100%;
   height: 100%;
   z-index: 2;
+  /* hide slideshow with fade effect */
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.split-slideshow .slideshow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%); */
+  z-index: 12;
 }
 
 .split-slideshow .slideshow-images {
@@ -92,7 +112,6 @@ html {
   translate: -50% 0;
 }
 
-
 /***** Slideshow Text */
 
 .split-slideshow .slideshow-text {
@@ -148,4 +167,37 @@ html {
 .split-slideshow .item.move-up {
   top: -100%;
   opacity: 1;
+}
+
+@keyframes bounceOutUp {
+  20% {
+    transform: translate3d(0, -10px, 0) scaleY(0.985);
+  }
+
+  40%,
+  45% {
+    opacity: 1;
+    transform: translate3d(0, 20px, 0) scaleY(0.9);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0) scaleY(3);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.split-slideshow.animate {
+  animation-name: fadeOutUp;
+  animation-duration: 1s;
 }
