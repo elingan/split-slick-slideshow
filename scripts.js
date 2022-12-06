@@ -1,4 +1,3 @@
-
 const splitSlideshow = document.querySelector('.split-slideshow')
 const overlay = document.querySelector('.slideshow-overlay')
 const slideshowImages = document.querySelector('.slideshow-images')
@@ -54,15 +53,7 @@ autoStartSlideshow()
 overlay.addEventListener('click', () => {
   clearInterval(intervalSlideshow)
   splitSlideshow.classList.add('animate')
-  // document.documentElement.style.setProperty('--animate-duration', '1s')
-  // splitSlideshow.style.setProperty('--animate-duration', '1s')
-  // splitSlideshow.style.opacity = 0
   setTimeout(() => {
     splitSlideshow.remove()
   }, 1000)
 })
-
-
-// setTimeout(() => {
-//   clearInterval(intervalSlideshow)
-// }, 8000)
